@@ -1,0 +1,42 @@
+# --- servicefrontend ---
+/servicefrontend/node_modules/
+/servicefrontend/dist/
+/servicefrontend/dist-ssr/
+/servicefrontend/*.local
+/servicefrontend/ecosystem.config.cjs
+
+# Logs
+/servicefrontend/logs/
+/servicefrontend/*.log
+/servicefrontend/npm-debug.log*
+/servicefrontend/yarn-debug.log*
+/servicefrontend/yarn-error.log*
+/servicefrontend/pnpm-debug.log*
+/servicefrontend/lerna-debug.log*
+
+# Editors & OS junk
+/servicefrontend/.vscode/*
+!/servicefrontend/.vscode/extensions.json
+/servicefrontend/.idea
+/servicefrontend/.DS_Store
+/servicefrontend/*.suo
+/servicefrontend/*.ntvs*
+/servicefrontend/*.njsproj
+/servicefrontend/*.sln
+/servicefrontend/*.sw?
+
+# --- servicebackend ---
+/servicebackend/__pycache__/
+/servicebackend/*.py[cod]
+/servicebackend/*.pyo
+/servicebackend/venv/
+/servicebackend/.env/
+/servicebackend/.venv/
+/servicebackend/uvicorn.log
+/servicebackend/nohup.out
+/servicebackend/.DS_Store
+/servicebackend/*.swp
+/servicebackend/*.swo
+/servicebackend/*.bak
+/servicebackend/.vscode/
+/servicebackend/.idea
