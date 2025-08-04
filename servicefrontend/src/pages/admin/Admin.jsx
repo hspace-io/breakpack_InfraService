@@ -5,8 +5,27 @@ import { fetchInstances } from '../../hook/PodGetList'
 import { deleteInstanceById } from '../../hook/PodDelete'
 import { motion } from 'framer-motion'
 import { AnimatedContainer } from './AdminStyled'
+import { Verify } from "../../hook/Auth/AuthVerify";
+import { useNavigate } from "react-router-dom";
 
 const CreateServicePage = () => {
+
+  const navigate = useNavigate();
+  const [authChecked, setAuthChecked] = useState(false);
+
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      const result = await Verify();
+      if (!result.username || result.auth_level < 2) {
+        alert("관리자 권한이 필요합니다.");
+        navigate('/dashboard');
+      } else {
+        setAuthChecked(true); // 권한 OK → 렌더링 시작
+      }
+    };
+    checkLoginStatus();
+  }, []);
+
   const [form, setForm] = useState({
     image: '',
     service_name: '',
@@ -76,10 +95,14 @@ const CreateServicePage = () => {
     if (res.success) fetchInstancesWrapper()
   }
 
+  if (!authChecked) return null;
   return (
     <S.Wrapper>
       <S.Button style={{ position: 'absolute', top: '1rem', left: '1rem' }} onClick={() => window.location.href = '/dashboard'}>
         Go to Dashboard
+      </S.Button>
+      <S.Button style={{ position: 'absolute', top: '1rem', right: '1rem' }} onClick={() => window.location.href = '/admin/info'}>
+        Go to User Info
       </S.Button>
       <h2>Administrate Resource</h2>
       <S.DescriptWrapper

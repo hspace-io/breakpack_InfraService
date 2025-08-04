@@ -52,7 +52,7 @@ export const EffectEntire = styled.div`
   /* backdrop-filter: blur(6px); */
 `;
 
-export const LoginForm = styled.div`
+export const LoginForm = styled.form`
   position: absolute;
   z-index: 400;
 

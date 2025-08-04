@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { ChevronsLeft, ChevronsRight, CirclePlus, ChartNoAxesCombined, User, Users } from 'lucide-react';
+import { ChevronsLeft, ChevronsRight, CirclePlus, ChartNoAxesCombined, User, Users, LogOut } from 'lucide-react';
 import * as S from './DashboardSideStyled';
 import DClock from "../DigitalClock/DigitalClock";
+import { logout } from "../../hook/Auth/AuthLogout";
 
 const DashboardSide = ({toggle}) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,10 +49,14 @@ const DashboardSide = ({toggle}) => {
           <S.StatLabel isOpen={isOpen}>targets</S.StatLabel>
           <S.StatValue isOpen={isOpen}>{`6`} people participating</S.StatValue>
         </S.StatCard>
-        <S.StatCard isOpen={isOpen}>
+        <S.StatCard isOpen={isOpen} style={{ cursor: "pointer" }} >
           <S.StatIcon><User/></S.StatIcon>
           <S.StatLabel isOpen={isOpen}>My Information</S.StatLabel>
           <S.StatValue isOpen={isOpen}>Setting</S.StatValue>
+        </S.StatCard>
+        <S.StatCard isOpen={isOpen} style={{ cursor: "pointer" }} onClick={logout}>
+          <S.StatIcon><LogOut/></S.StatIcon>
+          <S.StatValue isOpen={isOpen}>Logout</S.StatValue>
         </S.StatCard>
       </S.Stats>
       </S.StatsWrapper>

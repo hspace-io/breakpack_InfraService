@@ -2,11 +2,41 @@ import * as S from "./styled/LoginStyled"
 import Spline from '@splinetool/react-spline'
 import React, { useState, useEffect } from "react"
 import { ArrowBigLeftDash } from "lucide-react"
+import { login } from "../../hook/Auth/AuthLogin";
+import { Verify } from "../../hook/Auth/AuthVerify";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-  // eslint-disable-next-line no-unused-vars
   const [userName, setUserName] = useState("");
+  const [password, serPassword] = useState("");
   const [isLoaded, setIsLoaded] = useState(true);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      const result = await Verify();
+      if (result.username) {
+        alert("이미 로그인 되어 있습니다.")
+        navigate('/dashboard');
+      }
+    };
+    checkLoginStatus();
+  }, []);
+
+  // 로그인 요청 처리
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const result = await login({ username: userName, password });
+
+    if (result.success) {
+      alert("반갑습니다 " + userName + "님!")
+      // 로그인 성공 시 처리
+      navigate('/dashboard');
+    } else {
+      alert("로그인 실패: " + result.error)
+    }
+  }
 
   const [shouldRenderSpline, setShouldRenderSpline] = useState(false);
   const splineRef = React.useRef(null);
@@ -63,7 +93,7 @@ const LoginPage = () => {
       {isLoaded ? (
         <>
           {/* 여기 로그인 폼 */}
-          <S.LoginForm>         
+          <S.LoginForm onSubmit={handleLogin}>         
               <S.ArrowBigLeftDash>
                 <S.A to="/"><ArrowBigLeftDash/></S.A>
               </S.ArrowBigLeftDash> 
@@ -85,13 +115,13 @@ const LoginPage = () => {
               </S.Input>
               <S.Input>
                 <S.InputTag
-                  id="LidInput"
-                  type="text"
+                  id="password"
+                  type="password"
                   required
                   equal={true}
-                  onChange={(e) => setUserName(e.target.value)}
+                  onChange={(e) => serPassword(e.target.value)}
                 ></S.InputTag>
-                <S.Label htmlFor="LidInput">PW: </S.Label>
+                <S.Label htmlFor="password">PW: </S.Label>
                 <S.UnderLine></S.UnderLine>
               </S.Input>
             </S.InputWrapper>
@@ -124,4 +154,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default LoginPage;

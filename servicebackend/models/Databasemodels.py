@@ -27,3 +27,4 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
     refresh_token = Column(String(500), nullable=True)
+    auth_level = Column(Integer, default=0, nullable=False)

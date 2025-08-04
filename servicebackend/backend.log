@@ -1,10 +1,36 @@
 nohup: ignoring input
 INFO:     Will watch for changes in these directories: ['/home/wargametest/Codespace/breakpack_InfraService/servicebackend']
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [1287756] using WatchFiles
+INFO:     Started reloader process [1649463] using WatchFiles
 /home/wargametest/Codespace/breakpack_InfraService/servicebackend/venv/lib/python3.12/site-packages/pydantic/_internal/_config.py:373: UserWarning: Valid config keys have changed in V2:
 * 'orm_mode' has been renamed to 'from_attributes'
   warnings.warn(message, UserWarning)
-INFO:     Started server process [1287759]
+INFO:     Started server process [1649466]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
+INFO:     192.168.10.113:65205 - "POST /auth/verify HTTP/1.1" 401 Unauthorized
+(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/wargametest/Codespace/breakpack_InfraService/servicebackend/venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+knights_adminknights123!@#
+INFO:     192.168.10.113:65207 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65208 - "GET / HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65207 - "GET /7fd0d5de-60a0-4061-bf02-1b602eade5a7/screenshot?ts=1754295612892 HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65210 - "GET /c04f9cd4-4168-4697-8bb6-744f404d647b/screenshot?ts=1754295612893 HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65209 - "GET /e00783d2-9528-4b47-8b23-205b861cbb86/screenshot?ts=1754295612893 HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65209 - "POST /auth/verify HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65208 - "GET /?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65209 - "POST /auth/verify HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65207 - "GET /auth/users HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65208 - "GET / HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65209 - "GET /e00783d2-9528-4b47-8b23-205b861cbb86/screenshot?ts=1754295619344 HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65207 - "GET /7fd0d5de-60a0-4061-bf02-1b602eade5a7/screenshot?ts=1754295619344 HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65210 - "GET /c04f9cd4-4168-4697-8bb6-744f404d647b/screenshot?ts=1754295619344 HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65214 - "GET / HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65217 - "GET /c04f9cd4-4168-4697-8bb6-744f404d647b/screenshot?ts=1754295626553 HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65216 - "GET /e00783d2-9528-4b47-8b23-205b861cbb86/screenshot?ts=1754295626553 HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65216 - "POST /auth/logout HTTP/1.1" 200 OK
+INFO:     192.168.10.113:65215 - "GET /7fd0d5de-60a0-4061-bf02-1b602eade5a7/screenshot?ts=1754295626553 HTTP/1.1" 200 OK

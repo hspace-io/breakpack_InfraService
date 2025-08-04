@@ -16,7 +16,9 @@ const Topbar = () => {
         <S.NavItem>
           <S.A to="/login">Login</S.A>
         </S.NavItem>
-        <S.NavItem>Sign in</S.NavItem>
+        <S.NavItem>
+          <S.A to="/signup">Sing up</S.A>
+        </S.NavItem>
       </S.NavWrapper>
       
     </S.TopbarWrapper>
