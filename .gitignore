@@ -31,6 +31,7 @@
 /servicebackend/*.pyo
 /servicebackend/venv/
 /servicebackend/.env/
+/servicebackend/.env
 /servicebackend/.venv/
 /servicebackend/uvicorn.log
 /servicebackend/nohup.out

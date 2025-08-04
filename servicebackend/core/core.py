@@ -65,8 +65,8 @@ def deploy_yaml_to_kubernetes(yaml_content: str):
                 check=True
             )
             print("✅ YAML deployment successful:\n", result.stdout) 
-        except e:
-            print(e)
+        except subprocess.CalledProcessError as e:
+            print("❌ Error during apply:\n", e.stderr)
         
     except subprocess.CalledProcessError as e:
         print("❌ YAML deployment failed:\n", e.stderr)

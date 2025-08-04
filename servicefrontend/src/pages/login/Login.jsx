@@ -1,19 +1,62 @@
 import * as S from "./styled/LoginStyled"
 import Spline from '@splinetool/react-spline'
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { ArrowBigLeftDash } from "lucide-react"
 
 const LoginPage = () => {
   // eslint-disable-next-line no-unused-vars
   const [userName, setUserName] = useState("");
-  const [isLoaded, setIsLoaded] = useState(false);
-1001.00
+  const [isLoaded, setIsLoaded] = useState(true);
+
+  const [shouldRenderSpline, setShouldRenderSpline] = useState(false);
+  const splineRef = React.useRef(null);
+
+  useEffect(() => {
+    let frameCount = 0;
+    let startTime = performance.now();
+
+    const checkFPS = () => {
+      frameCount++;
+      const now = performance.now();
+      const duration = now - startTime;
+
+      if (duration >= 1000) {
+        const fps = (frameCount / duration) * 1000;
+
+        if (fps >= 100) setShouldRenderSpline(true);
+        else {
+          setShouldRenderSpline(false);
+          setTimeout(() => {
+            if (splineRef.current && splineRef.current.stop) {
+              splineRef.current.stop();
+            }
+          }, 3000);
+        }
+
+        return;
+      }
+
+      requestAnimationFrame(checkFPS);
+    };
+
+    requestAnimationFrame(checkFPS);
+  }, []);
+
   return (
     <S.LoginWrapper>
       <S.SplineObjectWrapper>
         <Spline
-          scene="/spline/domino.spline"
+          ref={splineRef}
+          scene={
+            shouldRenderSpline
+              ? "/spline/domino.spline"
+              : "/spline/norotate.spline"
+          }
           onLoad={() => setIsLoaded(true)}
+          onError={(e) => {
+            console.error("🔴 Spline load error", e);
+            setShouldRenderSpline(false);
+          }}
         />
       </S.SplineObjectWrapper>
 

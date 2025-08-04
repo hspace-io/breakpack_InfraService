@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from models.instance import GameInstance
+from models.Databasemodels import GameInstance
 from schemas.instance import InstanceCreate
 from fastapi import HTTPException, status
 from datetime import datetime
@@ -37,7 +37,6 @@ def create_instance(db: Session, data: InstanceCreate, yaml_content: str) -> Gam
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"YAML deployment failed: {str(e)}"
         )
-        raise e
 
     instance = GameInstance(
         id=str(uuid.uuid4()),
@@ -47,10 +46,15 @@ def create_instance(db: Session, data: InstanceCreate, yaml_content: str) -> Gam
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow(),
     )
-    db.add(instance)
-    db.commit()
-    db.refresh(instance)
-
+    
+    print(f"📦 Incoming data: name={data.name}, port={data.port}")
+    try:
+        db.add(instance)
+        db.commit()
+        db.refresh(instance)
+    except Exception as e:
+        raise e
+    
     return instance
 
 def get_instance_list(db: Session, skip: int = 0, limit: int = 100):
