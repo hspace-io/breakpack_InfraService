@@ -7,7 +7,7 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-336791?style=for-the-badge&logo=postgresql)
 ![Docker](https://img.shields.io/badge/Docker-3.8-2496ED?style=for-the-badge&logo=docker)
 
-**풀스택 웹 애플리케이션으로 3D 그래픽과 실시간 데이터 처리를 지원하는 인프라 서비스**
+**워게임 인프라 배포 서비스**
 
 [ 문서](#-문서) • [🚀 시작하기](#-시작하기) • [🛠️ 기술스택](#-기술스택) • [📁 구조](#-구조)
 
@@ -17,12 +17,10 @@
 
 ## ✨ 기능
 
-- 🎨 **3D 그래픽 렌더링** - Spline을 활용한 인터랙티브 3D 시각화
-- ⚡ **실시간 데이터 처리** - FastAPI 기반 고성능 API
-- 🔍 **이미지 처리** - OpenCV를 통한 고급 이미지 분석
-- 🌐 **웹 스크래핑** - Selenium 기반 데이터 수집
-- 🗄️ **데이터베이스 관리** - PostgreSQL과 SQLAlchemy ORM
-- 📦 **컨테이너화** - Docker를 통한 쉬운 배포
+- **YAML을 이용한 배포** - YAML이용해 웹에서 인프라 서비스를 Kubernetes에 배포
+- **실시간 데이터 처리** - FastAPI 기반 API
+- **이미지 처리** - OpenCV를 통한 고급 이미지 분석
+- **데이터베이스 관리** - PostgreSQL과 SQLAlchemy ORM
 
 ## 🛠️ 기술스택
 
@@ -47,7 +45,7 @@
 ### DevOps
 | 기술 | 버전 | 설명 |
 |------|------|------|
-| ![Docker](https://img.shields.io/badge/Docker-3.8-2496ED?style=flat&logo=docker) | 3.8 | 컨테이너화 |
+| ![Kubernetes](https://img.shields.io/badge/Kubernetes-1.28+-326CE5?style=flat&logo=kubernetes) | 1.28+ | 컨테이너 오케스트레이션 |
 | ![pnpm](https://img.shields.io/badge/pnpm-8.0+-F69220?style=flat&logo=pnpm) | 8.0+ | 패키지 매니저 |
 
 ## 📖 프로젝트 구조
